@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="myApp">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Covid-Angular</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="css/style.css" />
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW"
+      crossorigin="anonymous"
+    ></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
+    <script src="js/myscript.js"></script>
+  </head>
+  <body ng-controller="myCtrl">
+    <div class="container py-3">
+      <div class="bg-light">
+        <h1 class="text-center">{{title}}</h1>
+        <p class="pt-3">
+          Coronavirus disease 2019 (COVID-19) is a contagious disease caused by
+          severe acute respiratory syndrome coronavirus 2 (SARS-CoV-2). The
+          first case was identified in Wuhan, China, in December 2019. It has
+          since spread worldwide, leading to an ongoing pandemic.
+        </p>
+
+        <h2 class="text-center">World Wide Covid-19 Live Updates</h2>
+        <div class="row text-center">
+          <div class="col-md-4">
+            <div class="card bg-warning text-white">
+              <div class="card-body">
+                <h3>Confirm Cases</h3>
+                <h3>{{all_data.confirmed.value}}</h3>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="card bg-success text-white">
+              <div class="card-body">
+                <h3>Recoverd Cases</h3>
+                <h3>{{all_data.recovered.value}}</h3>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="card bg-danger text-white">
+              <div class="card-body">
+                <h3>Death Cases</h3>
+                <h3>{{all_data.deaths.value}}</h3>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <input
+          type="text"
+          class="form-control mt-4"
+          placeholder="Enter Country"
+          ng-model="input_country"
+          ng-change="get_country_data()"
+        />
+
+        <!-- get_country_data -->
+        <div class="container-fluid" ng-if="input_country_data">
+          <h2 class="text-center mt-4 text-uppercase">
+            {{input_country}} Covid-19 Live Updates
+          </h2>
+          <div class="row text-center">
+            <div class="col-md-4">
+              <div class="card bg-warning text-white">
+                <div class="card-body">
+                  <h3>Confirm Cases</h3>
+                  <h3>{{input_country_data.confirmed.value}}</h3>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-4">
+              <div class="card bg-success text-white">
+                <div class="card-body">
+                  <h3>Recoverd Cases</h3>
+                  <h3>{{input_country_data.recovered.value}}</h3>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-4">
+              <div class="card bg-danger text-white">
+                <div class="card-body">
+                  <h3>Death Cases</h3>
+                  <h3>{{input_country_data.deaths.value}}</h3>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
